@@ -1,9 +1,9 @@
 <a href="https://chatscape.vercel.app/">DEMO</a>
 
 ## Install package
-### `npm install && npm install --prefix client` 
+#### `npm install && npm install --prefix client` 
 or
-###  `yarn install && yarn install --prefix client`
+####  `yarn install && yarn install --prefix client`
 
 ## How to start
 ### `npm start` or `yarn start`
