@@ -1,4 +1,4 @@
-<a href="https://chat.hiepnguyen.site/">DEMO</a>
+<a href="https://chatscape.vercel.app/">DEMO</a>
 
 ## Install package
 ### `npm install && npm install --prefix client` 
