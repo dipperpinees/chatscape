@@ -1,0 +1,41 @@
+.member {
+    display: flex;
+    align-items: center;
+    margin: 8px -20px;
+    padding: 8px 20px;
+    &:hover {
+        background-color: #f5f3f3;
+        cursor: pointer;
+    }
+    & span {
+        font-size: 8px;
+        
+    }
+    & .avatar {
+        margin-right: 8px;
+    }
+    &-name {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* Mobile */
+@media (max-width: 739px){
+    .member {
+        & span {
+            font-size: 12px;
+        }
+
+        & h5 {
+            font-size: 20px;
+        }
+
+        & .avatar {
+            width: 52px!important;
+            height: 52px!important;
+        }
+    }
+
+
+}
