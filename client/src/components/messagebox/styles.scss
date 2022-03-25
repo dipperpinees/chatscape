@@ -15,6 +15,7 @@
             width: 100%;
             border-bottom: 0.5px solid #ccc;
             padding: 8px 24px;
+            z-index: 1000;
             &-member {
                 display: flex;
                 align-items: center;

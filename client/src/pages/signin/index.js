@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { sign_in } from '../../api/authApi';
 import authContext from '../../container/authContext';
-import { useNavigate } from 'react-router';
-import Loading from '../loading';
+import Loading from '../../components/loading';
+import { useAlert } from 'react-alert';
 
 function SignIn(props) {
     const formRef = useRef(null);
     const {authentication, setAuthentication} = useContext(authContext);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
+    const alert = useAlert();
 
     useEffect(() => {
         if(authentication?.token) {
@@ -31,7 +33,7 @@ function SignIn(props) {
             navigate("/");
         } catch (err) {
             setIsLoading(false);
-            alert(err.message);
+            alert.show(err.message);
         }
     }
 

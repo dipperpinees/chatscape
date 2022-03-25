@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { sign_up } from '../../api/authApi';
 import authContext from '../../container/authContext';
-import Avatar from "../avatar";
 import { FcAddImage } from "react-icons/fc";
 import { useNavigate } from 'react-router';
-import Loading from '../loading';
 import { join_box } from '../../api/chatApi';
+import Avatar from '../../components/avatar';
+import Loading from '../../components/loading';
+import { useAlert } from 'react-alert';
 
 function SignUp(props) {
     const fileRef = useRef();
@@ -18,6 +19,7 @@ function SignUp(props) {
     const {authentication, setAuthentication } = useContext(authContext);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
+    const alert = useAlert();
 
     useEffect(() => {
         if(authentication?.token) {
@@ -52,8 +54,16 @@ function SignUp(props) {
             setUserError("Tên tài khoản phải có độ dài ít nhất 6 kí tự");
             check = false;
         }
+        if(formRef.current.user.value.includes(" ")) {
+            setUserError("Tên tài khoản không chứa khoảng trắng");
+            check = false;
+        }
         if(formRef.current.password.value.length < 6) {
             setPasswordError("Mật khẩu phải có độ dài ít nhất 6 kí tự");
+            check = false;
+        }
+        if(formRef.current.password.value.includes(" ")) {
+            setUserError("Mật khẩu không chứa khoảng trắng");
             check = false;
         }
         if(formRef.current.repassword.value !== formRef.current.password.value) {
@@ -86,9 +96,11 @@ function SignUp(props) {
                 setIsLoading(false);
                 navigate("/");
             } catch (err) {
-                alert(err.message);
+                alert.show(err.message);
                 setIsLoading(false);
             }
+        } else {
+            setIsLoading(false);
         }
     }
 

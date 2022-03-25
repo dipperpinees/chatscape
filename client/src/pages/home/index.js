@@ -4,15 +4,15 @@ import { Route, Routes, useNavigate } from 'react-router';
 import { io } from 'socket.io-client';
 import useDeepCompareEffect from 'use-deep-compare-effect';
 import { create_box, get_all_box, join_box, out_box, post_chat, remove_box } from '../../api/chatApi';
-import { SOCKET_API } from '../../constant/namespace';
 import authContext from '../../container/authContext';
 import { removeAuth } from '../../container/localstorage';
-import AllBox from '../allboxchat';
-import CreateBox from '../createbox';
-import JoinBox from '../joinbox';
-import Loading from '../loading';
-import MessageBox from '../messagebox';
+import AllBox from '../../components/allboxchat';
+import CreateBox from '../../components/createbox';
+import JoinBox from '../../components/joinbox';
+import Loading from '../../components/loading';
+import MessageBox from '../../components/messagebox';
 import sound from '../../assets/sound.mp3';
+import { SOCKET_API } from '../../constant/namespace';
 
 let socket;
 
